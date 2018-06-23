@@ -55,9 +55,10 @@ var DelWebpackPlugin = function () {
           return path.join(outputPath, name);
         })));
 
-        // run delete 
+        // run delete
         del(includePatterns, {
-          ignore: excludePatterns
+          ignore: excludePatterns,
+          force: true
         }).then(function (paths) {
           if (_this.options.info) {
             console.log();
