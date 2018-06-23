@@ -5,8 +5,8 @@ const chalk = require('chalk')
 class DelWebpackPlugin {
   constructor (options) {
     this.options = {
-      info: true, 
-      exclude: [], 
+      info: true,
+      exclude: [],
       include: ['**'],
       ...options
     }
@@ -37,10 +37,11 @@ class DelWebpackPlugin {
         ...this.options.exclude.map(name => path.join(outputPath, name)),
         ...assetNames.map(name => path.join(outputPath, name))
       ]
-  
-      // run delete 
+
+      // run delete
       del(includePatterns, {
-        ignore: excludePatterns
+        ignore: excludePatterns,
+        force: true
       }).then(paths => {
         if (this.options.info) {
           console.log()
